@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackSchoolBus</title>
+    <link rel="stylesheet" href="dashboard.css">   
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>TrackSchoolBus</h1>
+        </div>
+        <div class="hero-heading">
+            <h2>Revolutionizing School Bus Management</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>At TrackSchoolBus, we aim to redefine safety and efficiency in school transportation. Our cutting-edge platform enables real-time tracking, route optimization, and streamlined management for schools and parents alike.</p>
+            <p>With a focus on ensuring the safety of students, we bridge the gap between technology and transportation, offering a solution you can trust.</p>
+        </div>
+        <img src="CKphotography-12-scaled-1024x368.jpg" alt="School Bus" class="about-image">
+    </section>
+
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">📍</div>
+                <h3>Real-Time Tracking</h3>
+                <p>Track your child's bus location in real-time.</p>
+                <button onclick="location.href='http://localhost/bustracking/busdetails.html'">Click Here</button>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🗺️</div>
+                <h3>Route Optimization</h3>
+                <p>Efficiently plan and optimize bus routes.</p>
+                <button onclick="location.href='http://localhost/bustracking/trackmybus.html'">Click Here</button>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🛠️</div>
+                <h3>Attendance Management</h3>
+                <p>Mark student attendance automatically with smart devices.</p>
+                <button onclick="location.href='attendance-management.html'">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>Step 1</h3>
+                <p>Sign up for TrackSchoolBus and create your account.</p>
+            </div>
+            <div class="step">
+                <h3>Step 2</h3>
+                <p>Connect the system to your school bus fleet.</p>
+            </div>
+            <div class="step">
+                <h3>Step 3</h3>
+                <p>Monitor real-time updates and manage routes effortlessly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Reach out for any queries or feedback.</p>
+        <div class="contact-details">
+            <div class="detail">
+                <h3>Email</h3>
+                <p>harshshahu@hotmail.com</p>
+            </div>
+            <div class="detail">
+                <h3>Phone</h3>
+                <p>+91 7020756155</p>
+            </div>
+            <div class="detail">
+                <h3>Address</h3>
+                <p>Mauli College Of Engineeering, Sawarna, Shegaon</p>
+            </div>
+        </div>
+        <form class="contact-form" action="contactform.php" method="POST">
+            <h3>Send Us a Message</h3>
+            <div class="input-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-group">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2025 TrackSchoolBus | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

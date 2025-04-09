@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Detail Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-container h2 {
+            margin: 0 0 20px;
+            color: #0077cc;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            background-color: #fff;
+        }
+
+        .form-group select:focus {
+            outline: none;
+            border-color: #0077cc;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #0077cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #005fa3;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer a {
+            color: #0077cc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Bus Details</h2>
+        <form action="map.html" method="POST">
+            <div class="form-group">
+                <label for="busName">Select Bus Name:</label>
+                <select id="busName" name="busName" required>
+                    <option value="" disabled selected>"Select Bus Name"</option>
+                    <option value="City Express">City Express</option>
+                    <option value="Metro Liner">Metro Liner</option>
+                    <option value="Green Valley">Green Valley</option>
+                    <option value="Blue Comet">Blue Comet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="busID">"Select Bus ID:"</label>
+                <select id="busID" name="busID" required>
+                    <option value="" disabled selected>Select Bus ID</option>
+                    <option value="CX101">MH101</option>
+                    <option value="ML202">MH202</option>
+                    <option value="GV303">MH303</option>
+                    <option value="BC404">MH404</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="footer">
+            <p>Want to see all buses? <a href="bus-list.php">View List</a></p>
+        </div>
+    </div>
+</body>
+</html>

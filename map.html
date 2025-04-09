@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background: #0077cc;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #map {
+            flex: 1;
+        }
+
+        #coordinates {
+            margin: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Live Location Tracker</h1>
+    </header>
+    <p id="coordinates">Waiting for location...</p>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([0, 0], 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Marker for live location
+        let marker;
+
+        // Function to fetch the latest coordinates
+        const fetchLocation = () => {
+            fetch('http://localhost/bustracking/map.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const latitude = parseFloat(data.latitude);
+                        const longitude = parseFloat(data.longitude);
+
+                        // Update coordinates display
+                        document.getElementById('coordinates').innerText =
+                            `Latitude: ${latitude.toFixed(5)}, Longitude: ${longitude.toFixed(5)}`;
+
+                        // Update marker and map view
+                        if (!marker) {
+                            marker = L.marker([latitude, longitude]).addTo(map)
+                                .bindPopup("Current Location").openPopup();
+                        } else {
+                            marker.setLatLng([latitude, longitude]);
+                        }
+                        map.setView([latitude, longitude], 15);
+                    } else {
+                        document.getElementById('coordinates').innerText = "Error: " + data.message;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching location:", error);
+                    document.getElementById('coordinates').innerText = "Error fetching location.";
+                });
+        };
+
+        // Fetch location every 30 seconds
+        fetchLocation();
+        setInterval(fetchLocation, 1000);
+    </script>
+</body>
+</html>

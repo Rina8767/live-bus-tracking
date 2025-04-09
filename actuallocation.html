@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location Tracker</title>
+    <link rel="stylesheet" href="actuallocation.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Current Location</h1>
+        <div class="location-info">
+            <p id="address">Loading address...</p>
+            <p id="coordinates"></p>
+        </div>
+    </div>
+
+    <script>
+        // Fetch the current location from the database
+        fetch('http://localhost/bustracking/actuallocation.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const address = data.address;
+                    const latitude = data.latitude;
+                    const longitude = data.longitude;
+
+                    // Display the address and coordinates
+                    document.getElementById('address').innerText = "Address: " + address;
+                    document.getElementById('coordinates').innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                } else {
+                    document.getElementById('address').innerText = "Error: " + data.message;
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById('address').innerText = "Error fetching location data.";
+            });
+    </script>
+</body>
+</html>

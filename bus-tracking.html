@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Bus Tracking</title>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>College Bus Live Tracking</h1>
+    <div id="map"></div>
+
+    <script>
+        let map;
+        let busMarker;
+
+        // Example bus coordinates (simulating live updates)
+        const busCoordinates = [
+            { lat: 40.7128, lng: -74.0060 },
+            { lat: 40.7138, lng: -74.0050 },
+            { lat: 40.7148, lng: -74.0040 },
+        ];
+
+        let currentIndex = 0;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: busCoordinates[0],
+                zoom: 15,
+            });
+
+            busMarker = new google.maps.Marker({
+                position: busCoordinates[0],
+                map,
+                title: "College Bus",
+                icon: {
+                    url: "https://maps.google.com/mapfiles/kml/shapes/bus.png",
+                    scaledSize: new google.maps.Size(40, 40),
+                },
+            });
+
+            simulateBusMovement();
+        }
+
+        function simulateBusMovement() {
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % busCoordinates.length; // Loop through coordinates
+                busMarker.setPosition(busCoordinates[currentIndex]);
+                map.panTo(busCoordinates[currentIndex]);
+            }, 3000); // Update every 3 seconds
+        }
+    </script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7ufmGmDfvknRClfDJbncnHOwX24GIhqo&callback=initMap"
+        async
+        defer
+    ></script>
+</body>
+</html>
